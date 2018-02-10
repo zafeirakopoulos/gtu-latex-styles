@@ -1,0 +1,160 @@
+%% BAP Gebze Technical University
+%% BAPGTU LaTeX package
+%% Copyright 2018 Zafeirakis Zafeirakopoulos
+%% zafeirakopoulos@gmail.com
+  %
+  % This work may be distributed and/or modified under the
+  % conditions of the LaTeX Project Public License, either version 1.3
+  % of this license or (at your option) any later version.
+  % The latest version of this license is in
+  %   http://www.latex-project.org/lppl.txt
+  % and version 1.3 or later is part of all distributions of LaTeX
+  % version 2005/12/01 or later.
+  %
+  % This work has the LPPL maintenance status `maintained'.
+  %
+  % The Current Maintainer of this work is Zafeirakis Zafeirakopoulos.
+  %
+  % This work consists of the files bap_report.tex, gtu.png, bap.bib and BAPGTU.sty.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Identification    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bapgtu}[2018/02/09 v0.1 bapgtu]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Required Packages  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[a4paper,bindingoffset=0cm,%
+            left=2.5cm,right=2.5cm,top=3cm,bottom=2.8cm
+           ]{geometry}
+\RequirePackage[scaled=1]{helvet}
+\RequirePackage{times}
+\RequirePackage{graphicx}
+\RequirePackage{fancyhdr}
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\pagestyle{fancy}
+\lhead{\includegraphics[width=2.3cm]{gtu.png}}
+\rhead{}
+\renewcommand{\headrulewidth}{0pt}
+\lfoot{\scriptsize \fontfamily{phv}\selectfont{FR-0251 Yay{\i}n Tarihi: 01.11.2017 De\u{g}.No:0 De\u{g}.Tarihi:-}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Package Options  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareOption*{\PackageWarning{bapgtu}{Unknown '\CurrentOption'}}
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\PI}[2]{\def\pititle{#1}\def\piname{#2}}
+\newcommand{\project}[2]{\def\pnumber{#1}\def\pname{#2}}
+\newcommand{\reportdate}[1]{\def\repdate{#1}} %HAZİRAN, 20…..
+
+\newcommand{\frontpage}{
+    \pagenumbering{gobble}
+    \phantom{just an anchor}
+    Ek 1.
+    \begin{center}
+        \bf
+        GEBZE TEKN\.{I}K \"{U}N\.{I}VERS\.{I}TES\.{I} \\
+        B\.{I}L\.{I}MSEL ARA\c{S}TIRMA PROJES\.{I} SONU\c{C} RAPORU
+    \end{center}
+    \vspace{2.1cm}
+    \begin{center}
+    \includegraphics[width=6.8cm]{gtu.png}
+    \end{center}
+    \vspace{2cm}
+    \begin{center}
+    \bf
+    PROJE ADI: \pname \\
+    \vspace{1em}
+    PROJE NO : G.T.\"{U}. BAP \pnumber
+    \end{center}
+    \vspace{2cm}
+    \begin{center}
+    \bf
+    \pititle\ \piname
+    \end{center}
+    \vspace{6cm}
+    \begin{center}
+    \bf
+    \repdate \\
+    GEBZE
+    \end{center}
+    \flushbottom
+    \clearpage
+}
+
+\newcommand{\contentpage}{
+    \pagenumbering{gobble}
+    \phantom{anchor}
+    \vspace{1cm}
+    { \centering
+        \bf \.{I}\c{C}\.{I}NDEK\.{I}LER
+    }
+    \renewcommand\contentsname{}
+    \addtocontents{toc}{~\hfill\textbf{Sayfa No}\par}
+    \tableofcontents
+    \clearpage
+}
+
+\newcommand{\bibpage}[1]{
+    \newpage
+    \phantom{just an anchor}
+    Ek 2.
+
+    \vspace{1em}
+    { \centering
+        \bf YARARLANILAN KAYNAK L\.{I}STES\.{I}N\.{I}N HAZIRLANMASI
+    }
+    \renewcommand{\refname}{}
+    \bibliographystyle{alpha}
+    \bibliography{#1}
+    \clearpage
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{ozet}
+    {
+        \newpage
+        \addcontentsline{toc}{section}{\"OZET}
+        \begin{center}
+            {\bf \"OZET}
+        \end{center}
+        \vspace{3em}
+    }
+    {
+        \clearpage
+    }
+
+
+\renewenvironment{abstract}
+    {
+        \newpage
+        \addcontentsline{toc}{section}{ABSTRACT}
+        \begin{center}
+            {\bf ABSTRACT}
+        \end{center}
+        \vspace{3em}
+    }
+    {
+        \clearpage
+        \pagenumbering{arabic}
+    }

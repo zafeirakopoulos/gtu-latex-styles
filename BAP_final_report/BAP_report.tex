@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\usepackage{bapgtu}
+
+% Remove the following package. Only needed for the example
+\usepackage{lipsum}
+
+\begin{document}
+
+\PI{Yard Do\c{c}}{Zafeirakis Zafeirakopoulos}
+\project{2016-A-27}{Volumes}
+\reportdate{\c{S}ubat 2018}
+
+\frontpage
+\contentpage
+
+\begin{ozet}
+    This is the abstract in Turkish
+\end{ozet}
+\begin{abstract}
+    This is the abstract in English
+\end{abstract}
+
+\section{Introduction}
+\lipsum[1-10]
+\section{Another Section}
+\lipsum[1-5]
+\section{Yet Another Section}
+\lipsum[1-3]
+
+\section{Final Section (with a citation)}
+\lipsum[1-3]
+Finally, this is how to cite a paper, see \cite{Breuer2017}.
+
+\bibpage{bap}
+
+\end{document}
